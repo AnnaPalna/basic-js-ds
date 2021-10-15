@@ -19,12 +19,13 @@ const { NotImplementedError } = require('../extensions/index.js');
 
 
 module.exports = function removeKFromList(head, val) {
+ 
     let array = transformToArray(head);
     array = array.filter((item) => item !== val);
     const res = transformToList(array)
     return res;
 }
-
+ // односвязный список трансформировать в массив
 function transformToArray(head) {
     let resArray = []
     if (head) {
@@ -37,6 +38,7 @@ function transformToArray(head) {
     return resArray
 }
 
+ // из массива сделать список
 function transformToList(array) {
     return array.reverse().reduce((acc, cur) => {
       if (acc) {
