@@ -46,8 +46,10 @@ module.exports = class BinarySearchTree {
   has(data, node = this.tree) {
     if (this.find(data, this.tree)) {
       return true
+    } else {
+      return false 
     }
-    return false  
+     
   }
 
   find(data, node = this.tree) {
@@ -67,7 +69,7 @@ module.exports = class BinarySearchTree {
   }
 
   remove(data, node = this.tree) {
-    if (!node) {
+    if (node === null) {
       return node
     }
     if (node.data > data) {
@@ -80,10 +82,10 @@ module.exports = class BinarySearchTree {
       if (!node.left && !node.right) {
         return null
       }
-      if (!node.left) {
+      if (node.left === null) {
         return node.right
       }
-      if (!node.right) {
+      if (node.right === null) {
         return node.left
       }
 
@@ -94,19 +96,25 @@ module.exports = class BinarySearchTree {
   }
 
   min(node = this.tree) {
+
+    if (!node) {
+      return null
+    }
     if (node.left) {
       return this.min(node.left)
-    } else {
-      return node.data
     }
+    return node.data
     
   }
 
   max(node = this.tree) {
-    if (node.right) {
-      return this.max(node.right)
-    } else {
-      return node.data
-    }
+
+  if (!node) {
+    return null
   }
+  if (node.right) {
+    return this.max(node.right)
+  }
+  return node.data
+}
 }
